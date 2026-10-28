@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="150dp"
+    android:viewportWidth="400"
+    android:viewportHeight="300">
+
+    <!-- Outer Silver/Grey Oval Frame (Transparent Background) -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#A0A5AA"
+        android:strokeWidth="2.5"
+        android:pathData="M 200,15 C 305,15 390,75 390,150 C 390,225 305,285 200,285 C 95,285 10,225 10,150 C 10,75 95,15 200,15 Z" />
+
+    <!-- === MAIN BROWN ROOF STRUCTURES === -->
+
+    <!-- Left Roof Structure - Shaded Face (Dark Brown) -->
+    <path
+        android:fillColor="#4A250E"
+        android:pathData="M 78,162 L 128,110 L 142,122 L 92,174 Z" />
+
+    <!-- Left Roof Structure - Top Slope (Medium Brown) -->
+    <path
+        android:fillColor="#7A421C"
+        android:pathData="M 128,110 L 165,128 L 152,140 L 128,122 Z" />
+
+    <!-- Left Roof Underhang / Shading -->
+    <path
+        android:fillColor="#3E1C08"
+        android:pathData="M 88,162 L 128,120 L 138,130 L 98,172 Z" />
+
+    <!-- Main Center Roof - Left Ridge Slope (Dark Bronze Brown) -->
+    <path
+        android:fillColor="#5D3316"
+        android:pathData="M 148,130 L 205,58 L 222,68 L 165,140 Z" />
+
+    <!-- Main Center Roof - Right Ridge Slope (Medium Warm Brown) -->
+    <path
+        android:fillColor="#7A421C"
+        android:pathData="M 205,58 L 315,126 L 298,138 L 205,78 Z" />
+
+    <!-- Main Center Roof Overhang & Peak Cap (Deep Brown) -->
+    <path
+        android:fillColor="#3E1C08"
+        android:pathData="M 205,55 L 210,58 L 205,64 L 200,58 Z" />
+
+    <!-- Right Roof/Chimney Block - Dark Side -->
+    <path
+        android:fillColor="#4A250E"
+        android:pathData="M 258,115 L 295,90 L 308,98 L 271,123 Z" />
+
+    <!-- Right Roof/Chimney Block - Light Side -->
+    <path
+        android:fillColor="#7A421C"
+        android:pathData="M 295,90 L 315,126 L 302,132 L 285,98 Z" />
+
+    <!-- Vertical Wall/Chimney Element on Right -->
+    <path
+        android:fillColor="#3E1C08"
+        android:pathData="M 290,92 L 302,92 L 302,120 L 290,120 Z" />
+
+
+    <!-- === ORANGE ROOF ELEMENTS & ACCENTS === -->
+
+    <!-- Upper Central Square Accent Window -->
+    <path
+        android:fillColor="#EA7C1E"
+        android:pathData="M 196,90 H 212 V 102 H 196 Z" />
+
+    <!-- Left Square Accent Window -->
+    <path
+        android:fillColor="#EA7C1E"
+        android:pathData="M 132,140 H 144 V 150 H 132 Z" />
+
+    <!-- Right Square Accent Window -->
+    <path
+        android:fillColor="#EA7C1E"
+        android:pathData="M 275,131 H 286 V 141 H 275 Z" />
+
+    <!-- Primary Orange Roof Gable (Outer Line) -->
+    <path
+        android:fillColor="#E0701B"
+        android:pathData="M 205,100 L 260,154 L 248,154 L 205,112 L 162,154 L 150,154 Z" />
+
+    <!-- Inner Orange Roof Gable (Sharper Peak) -->
+    <path
+        android:fillColor="#EA7C1E"
+        android:pathData="M 205,118 L 240,154 L 228,154 L 205,130 L 182,154 L 170,154 Z" />
+
+    <!-- Lower Orange Swoosh under Roofs -->
+    <path
+        android:fillColor="#EA7C1E"
+        android:pathData="M 155,154 Q 205,138 255,154 Q 205,145 155,154 Z" />
+
+
+    <!-- === BRAND TYPOGRAPHY: SPACE AND OCCUPY === -->
+
+    <!-- "S" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 134,171 C 131,171 129,172 129,174 C 129,176 131,177 134,178 L 136,178 C 139,179 141,180 141,183 C 141,186 138,188 133,188 C 129,188 126,186 126,183 H 128 C 128,185 130,186 133,186 C 136,186 138,185 138,183 C 138,181 136,180 133,179 L 131,179 C 128,178 126,176 126,174 C 126,171 129,169 133,169 C 137,169 140,171 140,174 H 137 C 137,172 135,171 134,171 Z" />
+
+    <!-- "P" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 144,169 H 150 C 153,169 155,171 155,174 C 155,177 153,179 150,179 H 147 V 188 H 144 Z M 147,171 V 177 H 150 C 151.5,177 152.5,176 152.5,174 C 152.5,172 151.5,171 150,171 Z" />
+
+    <!-- "A" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 161,169 L 166,188 H 163.5 L 162.3,183.5 H 157.7 L 156.5,188 H 154 Z M 160,174.5 L 158.3,181.5 H 161.7 Z" />
+
+    <!-- "C" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 174,171 C 171,171 169,173 169,178.5 C 169,184 171,186 174,186 C 177,186 178.5,184 178.5,181.5 H 181 C 181,185 178,188 174,188 C 168.5,188 166,184 166,178.5 C 166,173 168.5,169 174,169 C 178,169 181,172 181,175.5 H 178.5 C 178.5,173 177,171 174,171 Z" />
+
+    <!-- "E" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 184,169 H 192 V 171.2 H 187 V 177 H 191 V 179 H 187 V 185.8 H 192 V 188 H 184 Z" />
+
+    <!-- "A" (AND) -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 201,169 L 206,188 H 203.5 L 202.3,183.5 H 197.7 L 196.5,188 H 194 Z M 200,174.5 L 198.3,181.5 H 201.7 Z" />
+
+    <!-- "N" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 209,169 H 211.5 L 217,183.5 V 169 H 219.5 V 188 H 217 L 211.5,173.5 V 188 H 209 Z" />
+
+    <!-- "D" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 223,169 H 228 C 232.5,169 235,172.5 235,178.5 C 235,184.5 232.5,188 228,188 H 223 Z M 226,171.2 V 185.8 H 228 C 230.5,185.8 232,183.5 232,178.5 C 232,173.5 230.5,171.2 228,171.2 Z" />
+
+    <!-- "O" (OCCUPY) -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 245,169 C 250.5,169 253,173 253,178.5 C 253,184 250.5,188 245,188 C 239.5,188 237,184 237,178.5 C 237,173 239.5,169 245,169 Z M 245,171.2 C 241,171.2 239.8,174 239.8,178.5 C 239.8,183 241,185.8 245,185.8 C 249,185.8 250.2,183 250.2,178.5 C 250.2,174 249,171.2 245,171.2 Z" />
+
+    <!-- "C" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 261,171 C 258,171 256,173 256,178.5 C 256,184 258,186 261,186 C 264,186 265.5,184 265.5,181.5 H 268 C 268,185 265,188 261,188 C 255.5,188 253,184 253,178.5 C 253,173 255.5,169 261,169 C 265,169 268,172 268,175.5 H 265.5 C 265.5,173 264,171 261,171 Z" />
+
+    <!-- "C" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 275,171 C 272,171 270,173 270,178.5 C 270,184 272,186 275,186 C 278,186 279.5,184 279.5,181.5 H 282 C 282,185 279,188 275,188 C 269.5,188 267,184 267,178.5 C 267,173 269.5,169 275,169 C 279,169 282,172 282,175.5 H 279.5 C 279.5,173 278,171 275,171 Z" />
+
+    <!-- "U" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 285,169 H 288 V 182 C 288,185 289.5,186 291.5,186 C 293.5,186 295,185 295,182 V 169 H 298 V 182 C 298,186 295.5,188 291.5,188 C 287.5,188 285,186 285,182 Z" />
+
+    <!-- "P" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 301,169 H 307 C 310,169 312,171 312,174 C 312,177 310,179 307,179 H 304 V 188 H 301 Z M 304,171 V 177 H 307 C 308.5,177 309.5,176 309.5,174 C 309.5,172 308.5,171 307,171 Z" />
+
+    <!-- "Y" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 314,169 L 318,177 V 188 H 321 V 177 L 325,169 H 322 L 319.5,174.5 L 317,169 Z" />
+
+
+    <!-- === BRAND TYPOGRAPHY: INVESTMENTS === -->
+
+    <!-- "I" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 154,196 H 157 V 213 H 154 Z" />
+
+    <!-- "N" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 161,196 H 163.2 L 168,209 V 196 H 170.5 V 213 H 168.2 L 163.5,200 V 213 H 161 Z" />
+
+    <!-- "V" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 174,196 H 176.5 L 179.5,208 L 182.5,196 H 185 L 181,213 H 178 Z" />
+
+    <!-- "E" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 188,196 H 195 V 198 H 190.5 V 203 H 194 V 205 H 190.5 V 211 H 195 V 213 H 188 Z" />
+
+    <!-- "S" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 203,198 C 200.5,198 199,199 199,200.5 C 199,202 200.5,203 203,204 C 205.5,205 207.5,206 207.5,209 C 207.5,212 205,213.5 201,213.5 C 197.5,213.5 196,211.5 196,209 H 198.5 C 198.5,210.5 200,211.5 201,211.5 C 203,211.5 205,210.5 205,209 C 205,207.5 203.5,206.5 201,205.5 C 198.5,204.5 196.5,203.5 196.5,200.5 C 196.5,197.5 199,196 203,196 C 206,196 208,197.5 208,200 H 205.5 C 205.5,198.5 204.5,198 203,198 Z" />
+
+    <!-- "T" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 210,196 H 219 V 198 H 213.2 V 213 H 210.7 V 198 H 210 Z" />
+
+    <!-- "M" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 221,196 H 223.5 L 226.5,206 L 229.5,196 H 232 V 213 H 229.5 V 201 L 227,210 H 226 L 223.5,201 V 213 H 221 Z" />
+
+    <!-- "E" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 235,196 H 242 V 198 H 237.5 V 203 H 241 V 205 H 237.5 V 211 H 242 V 213 H 235 Z" />
+
+    <!-- "N" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 245,196 H 247.2 L 252,209 V 196 H 254.5 V 213 H 252.2 L 247.5,200 V 213 H 245 Z" />
+
+    <!-- "T" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 257,196 H 266 V 198 H 260.2 V 213 H 257.7 V 198 H 257 Z" />
+
+    <!-- "S" -->
+    <path
+        android:fillColor="#D9620E"
+        android:pathData="M 272,198 C 269.5,198 268,199 268,200.5 C 268,202 269.5,203 272,204 C 274.5,205 276.5,206 276.5,209 C 276.5,212 274,213.5 270,213.5 C 266.5,213.5 265,211.5 265,209 H 267.5 C 267.5,210.5 269,211.5 270,211.5 C 272,211.5 274,210.5 274,209 C 274,207.5 272.5,206.5 270,205.5 C 267.5,204.5 265.5,203.5 265.5,200.5 C 265.5,197.5 268,196 272,196 C 275,196 277,197.5 277,200 H 274.5 C 274.5,198.5 273.5,198 272,198 Z" />
+
+
+    <!-- === BOTTOM ELEGANT ORANGE SWOOSH === -->
+
+    <path
+        android:fillColor="#EA7C1E"
+        android:pathData="M 138,223 Q 200,248 262,223 Q 200,238 138,223 Z" />
+
+</vector>

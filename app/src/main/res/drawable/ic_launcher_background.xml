@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Rich Gradient Background using Brand Brown Palette -->
+    <path android:pathData="M0,0h108v108h-108z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="18"
+                android:startY="18"
+                android:endX="90"
+                android:endY="90"
+                android:type="linear">
+                <item android:color="#5F321E" android:offset="0.0" />
+                <item android:color="#8B4F2F" android:offset="0.6" />
+                <item android:color="#B97850" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Subtle Architectural Grid Pattern -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#1AB97850"
+        android:strokeWidth="0.8"
+        android:pathData="M27,0V108 M54,0V108 M81,0V108 M0,27H108 M0,54H108 M0,81H108" />
+
+    <!-- Subtle Diagonal Structural Lines -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#12FFFFFF"
+        android:strokeWidth="1"
+        android:pathData="M0,108 L108,0 M0,54 L54,0 M54,108 L108,54" />
+</vector>

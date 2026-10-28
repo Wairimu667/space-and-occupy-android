@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand Brown Palette -->
+    <color name="primary_brown">#8B4F2F</color>
+    <color name="dark_brown">#5F321E</color>
+    <color name="light_brown">#B97850</color>
+    <color name="cream">#F7F2EC</color>
+    <color name="light_cream">#EEE3D8</color>
+    <color name="deep_brown">#3A2117</color>
+    <color name="brand_black">#191512</color>
+    <color name="grey">#746B64</color>
+    <color name="border_color">#E5D8CC</color>
+
+    <!-- Material Design 3 Tokens -->
+    <color name="md_theme_primary">#8B4F2F</color>
+    <color name="md_theme_onPrimary">#FFFFFF</color>
+    <color name="md_theme_primaryContainer">#EEE3D8</color>
+    <color name="md_theme_onPrimaryContainer">#3A2117</color>
+
+    <color name="md_theme_secondary">#B97850</color>
+    <color name="md_theme_onSecondary">#FFFFFF</color>
+    <color name="md_theme_secondaryContainer">#F7F2EC</color>
+    <color name="md_theme_onSecondaryContainer">#5F321E</color>
+
+    <color name="md_theme_tertiary">#5F321E</color>
+    <color name="md_theme_onTertiary">#FFFFFF</color>
+    <color name="md_theme_tertiaryContainer">#EEE3D8</color>
+    <color name="md_theme_onTertiaryContainer">#191512</color>
+
+    <color name="md_theme_background">#F7F2EC</color>
+    <color name="md_theme_onBackground">#191512</color>
+    <color name="md_theme_surface">#FFFFFF</color>
+    <color name="md_theme_onSurface">#191512</color>
+    <color name="md_theme_surfaceVariant">#EEE3D8</color>
+    <color name="md_theme_onSurfaceVariant">#746B64</color>
+    <color name="md_theme_outline">#E5D8CC</color>
+    <color name="md_theme_outlineVariant">#E5D8CC</color>
+
+    <!-- Property Status Colors -->
+    <color name="status_available">#2E7D32</color>
+    <color name="status_sold">#C62828</color>
+    <color name="status_rented">#0277BD</color>
+    <color name="status_leased">#E65100</color>
+    <color name="status_pending">#F57C00</color>
+
+    <!-- Utility Colors -->
+    <color name="black">#191512</color>
+    <color name="white">#FFFFFF</color>
+    <color name="chip_background">#EEE3D8</color>
+    <color name="chip_stroke">#E5D8CC</color>
+</resources>
