@@ -56,6 +56,10 @@ public class AdminHomeActivity extends AppCompatActivity {
             startActivity(new Intent(AdminHomeActivity.this, ListingModerationActivity.class));
         });
 
+        binding.btnFlaggedListings.setOnClickListener(v -> {
+            startActivity(new Intent(AdminHomeActivity.this, ReportedListingsActivity.class));
+        });
+
         binding.btnLogout.setOnClickListener(v -> {
             sessionManager.logout();
             Intent intent = new Intent(AdminHomeActivity.this, LoginActivity.class);
@@ -72,6 +76,9 @@ public class AdminHomeActivity extends AppCompatActivity {
                 if (stats != null) {
                     binding.tvStatPendingAgents.setText(String.valueOf(stats.getPendingAgentVerifications()));
                     binding.tvStatTotalProps.setText(String.valueOf(stats.getTotalProperties()));
+                    binding.tvStatOpenReports.setText(String.valueOf(stats.getOpenListingReports()));
+                    binding.tvStatAdImpressions.setText(String.format("%,d", stats.getAdImpressions()));
+                    binding.tvStatAppDownloads.setText(String.format("%,d", stats.getAppDownloads()));
                 }
             }
 

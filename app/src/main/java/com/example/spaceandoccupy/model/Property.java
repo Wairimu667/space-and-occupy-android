@@ -28,10 +28,22 @@ public class Property implements Serializable {
     private String agentEmail;
     private String createdDate;
     private boolean isFavorite;
+    private boolean hiddenFromPublicFeed;
+    private boolean concealExactLocation;
+    private int approximateRadiusMeters;
+    private String landmarkName;
+    private String videoUrl;
+    private String transcodedImageUrl;
+    private String transcodedVideoUrl;
+    private boolean mediaTranscoded;
+    private int feedPriority;
+    private boolean freshlyCaptured;
+    private boolean agentVerified;
 
     public Property() {
         this.additionalImageUrls = new ArrayList<>();
         this.amenities = new ArrayList<>();
+        this.approximateRadiusMeters = 500;
     }
 
     public Property(String id, String title, String description, String propertyType, String listingType,
@@ -62,6 +74,7 @@ public class Property implements Serializable {
         this.agentEmail = agentEmail;
         this.createdDate = createdDate;
         this.isFavorite = false;
+        this.approximateRadiusMeters = 500;
     }
 
     public String getId() { return id; }
@@ -133,8 +146,59 @@ public class Property implements Serializable {
     public boolean isFavorite() { return isFavorite; }
     public void setFavorite(boolean favorite) { isFavorite = favorite; }
 
+    public boolean isHiddenFromPublicFeed() { return hiddenFromPublicFeed; }
+    public void setHiddenFromPublicFeed(boolean hiddenFromPublicFeed) { this.hiddenFromPublicFeed = hiddenFromPublicFeed; }
+
+    public boolean isConcealExactLocation() { return concealExactLocation; }
+    public void setConcealExactLocation(boolean concealExactLocation) { this.concealExactLocation = concealExactLocation; }
+
+    public int getApproximateRadiusMeters() { return approximateRadiusMeters; }
+    public void setApproximateRadiusMeters(int approximateRadiusMeters) { this.approximateRadiusMeters = approximateRadiusMeters; }
+
+    public String getLandmarkName() { return landmarkName; }
+    public void setLandmarkName(String landmarkName) { this.landmarkName = landmarkName; }
+
+    public String getVideoUrl() { return videoUrl; }
+    public void setVideoUrl(String videoUrl) { this.videoUrl = videoUrl; }
+
+    public String getTranscodedImageUrl() { return transcodedImageUrl; }
+    public void setTranscodedImageUrl(String transcodedImageUrl) { this.transcodedImageUrl = transcodedImageUrl; }
+
+    public String getTranscodedVideoUrl() { return transcodedVideoUrl; }
+    public void setTranscodedVideoUrl(String transcodedVideoUrl) { this.transcodedVideoUrl = transcodedVideoUrl; }
+
+    public boolean isMediaTranscoded() { return mediaTranscoded; }
+    public void setMediaTranscoded(boolean mediaTranscoded) { this.mediaTranscoded = mediaTranscoded; }
+
+    public int getFeedPriority() { return feedPriority; }
+    public void setFeedPriority(int feedPriority) { this.feedPriority = feedPriority; }
+
+    public boolean isFreshlyCaptured() { return freshlyCaptured; }
+    public void setFreshlyCaptured(boolean freshlyCaptured) { this.freshlyCaptured = freshlyCaptured; }
+
+    public boolean isAgentVerified() { return agentVerified; }
+    public void setAgentVerified(boolean agentVerified) { this.agentVerified = agentVerified; }
+
     public String getFormattedPrice() {
         String unitStr = (priceUnit != null && !priceUnit.isEmpty() && !priceUnit.equalsIgnoreCase("total")) ? " " + priceUnit : "";
         return String.format("KSh %,.0f%s", price, unitStr);
+    }
+
+    public String getPublicLocationLabel() {
+        if (concealExactLocation) {
+            int radius = approximateRadiusMeters > 0 ? approximateRadiusMeters : 500;
+            String landmark = (landmarkName != null && !landmarkName.trim().isEmpty())
+                    ? landmarkName.trim()
+                    : (location != null ? location : "this landmark");
+            return "Within " + radius + "m of " + landmark;
+        }
+        return location;
+    }
+
+    public String getDisplayImageUrl() {
+        if (transcodedImageUrl != null && !transcodedImageUrl.isEmpty()) {
+            return transcodedImageUrl;
+        }
+        return imageUrl;
     }
 }

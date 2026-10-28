@@ -51,7 +51,7 @@ public class ManageAllPropertiesActivity extends AppCompatActivity implements Ad
     }
 
     private void loadAllProperties() {
-        repository.getProperties(new PropertyRepository.RepositoryCallback<List<Property>>() {
+        repository.getAllPropertiesForAdmin(new PropertyRepository.RepositoryCallback<List<Property>>() {
             @Override
             public void onSuccess(List<Property> result) {
                 adapter.updateData(result);

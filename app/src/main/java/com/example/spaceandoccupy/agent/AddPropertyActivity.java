@@ -12,10 +12,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.spaceandoccupy.R;
 import com.example.spaceandoccupy.databinding.ActivityAddPropertyBinding;
+import com.example.spaceandoccupy.media.MediaTranscoder;
 import com.example.spaceandoccupy.model.Property;
 import com.example.spaceandoccupy.model.User;
 import com.example.spaceandoccupy.repository.PropertyRepository;
 import com.example.spaceandoccupy.repository.SessionManager;
+import com.example.spaceandoccupy.subscription.SubscriptionPolicy;
 
 import java.util.Arrays;
 
@@ -49,6 +51,8 @@ public class AddPropertyActivity extends AppCompatActivity {
         binding.toolbar.setNavigationOnClickListener(v -> finish());
 
         setupTypeAndListingSelectors();
+        binding.tvTranscodeNote.setText("Uploads pass through backend transcoding to "
+                + MediaTranscoder.formatLabel() + " for faster mobile playback.");
 
         binding.btnSubmitProperty.setOnClickListener(v -> performPropertySubmission());
     }
@@ -139,6 +143,13 @@ public class AddPropertyActivity extends AppCompatActivity {
         }
 
         User agent = sessionManager.getCurrentUser();
+        if (!SubscriptionPolicy.isSubscriptionActive(agent, System.currentTimeMillis())) {
+            Toast.makeText(this, "Activate a paid subscription to publish listings.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        String landmark = binding.etLandmark.getText() != null ? binding.etLandmark.getText().toString().trim() : "";
+        String videoUrl = binding.etVideoUrl.getText() != null ? binding.etVideoUrl.getText().toString().trim() : "";
 
         Property property = new Property(
                 null,
@@ -163,6 +174,14 @@ public class AddPropertyActivity extends AppCompatActivity {
                 agent != null ? agent.getEmail() : "agent@spaceandoccupy.com",
                 null
         );
+        property.setConcealExactLocation(binding.switchConcealLocation.isChecked());
+        property.setApproximateRadiusMeters(500);
+        property.setLandmarkName(landmark.isEmpty() ? location : landmark);
+        property.setFreshlyCaptured(true); // Recorded via In-App Recording Pipeline
+        property.setAgentVerified(agent != null && agent.isVerified());
+        if (!videoUrl.isEmpty()) {
+            property.setVideoUrl(videoUrl);
+        }
 
         binding.btnSubmitProperty.setEnabled(false);
 

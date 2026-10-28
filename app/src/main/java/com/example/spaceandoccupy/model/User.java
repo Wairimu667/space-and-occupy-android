@@ -13,6 +13,10 @@ public class User implements Serializable {
     private String avatarUrl;
     private String agencyName;
     private String licenseNumber;
+    private String subscriptionTier; // FREE_TRIAL, BASIC, PRO, PREMIUM
+    private long registeredAtMillis;
+    private long subscriptionExpiresAtMillis;
+    private boolean paymentDelinquent;
 
     public User() {}
 
@@ -56,4 +60,16 @@ public class User implements Serializable {
 
     public String getLicenseNumber() { return licenseNumber; }
     public void setLicenseNumber(String licenseNumber) { this.licenseNumber = licenseNumber; }
+
+    public String getSubscriptionTier() { return subscriptionTier; }
+    public void setSubscriptionTier(String subscriptionTier) { this.subscriptionTier = subscriptionTier; }
+
+    public long getRegisteredAtMillis() { return registeredAtMillis; }
+    public void setRegisteredAtMillis(long registeredAtMillis) { this.registeredAtMillis = registeredAtMillis; }
+
+    public long getSubscriptionExpiresAtMillis() { return subscriptionExpiresAtMillis; }
+    public void setSubscriptionExpiresAtMillis(long subscriptionExpiresAtMillis) { this.subscriptionExpiresAtMillis = subscriptionExpiresAtMillis; }
+
+    public boolean isPaymentDelinquent() { return paymentDelinquent; }
+    public void setPaymentDelinquent(boolean paymentDelinquent) { this.paymentDelinquent = paymentDelinquent; }
 }

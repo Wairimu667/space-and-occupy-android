@@ -10,6 +10,9 @@ public class DashboardStats implements Serializable {
     private int pendingListingApprovals;
     private int totalInquiries;
     private int totalSiteVisits;
+    private int openListingReports;
+    private int adImpressions;
+    private int appDownloads;
 
     public DashboardStats() {}
 
@@ -44,4 +47,13 @@ public class DashboardStats implements Serializable {
 
     public int getTotalSiteVisits() { return totalSiteVisits; }
     public void setTotalSiteVisits(int totalSiteVisits) { this.totalSiteVisits = totalSiteVisits; }
+
+    public int getOpenListingReports() { return openListingReports; }
+    public void setOpenListingReports(int openListingReports) { this.openListingReports = openListingReports; }
+
+    public int getAdImpressions() { return adImpressions; }
+    public void setAdImpressions(int adImpressions) { this.adImpressions = adImpressions; }
+
+    public int getAppDownloads() { return appDownloads; }
+    public void setAppDownloads(int appDownloads) { this.appDownloads = appDownloads; }
 }

@@ -320,6 +320,32 @@
                     </LinearLayout>
 
                     <!-- Image URL -->
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/switch_conceal_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:checked="true"
+                        android:text="Conceal exact pin (show ~500m radius)"
+                        android:textColor="@color/deep_brown" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_landmark"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:hint="Nearby landmark (for approximate location)"
+                        app:boxStrokeColor="@color/primary_brown">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_landmark"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textCapWords"
+                            android:textColor="@color/brand_black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_image_url"
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -337,6 +363,32 @@
                             android:textColor="@color/brand_black" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_video_url"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:hint="Walkthrough video URL (optional)"
+                        app:boxStrokeColor="@color/primary_brown">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_video_url"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textUri"
+                            android:textColor="@color/brand_black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tv_transcode_note"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Media is transcoded to H.264 720p mobile for faster playback."
+                        android:textColor="@color/grey"
+                        android:textSize="12sp" />
 
                     <!-- Description -->
                     <com.google.android.material.textfield.TextInputLayout

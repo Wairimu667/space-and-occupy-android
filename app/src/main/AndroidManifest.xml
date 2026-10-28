@@ -85,6 +85,10 @@
             android:name=".agent.AgentInquiriesActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".agent.SubscriptionActivity"
+            android:exported="false" />
+
         <!-- Admin Portal -->
         <activity
             android:name=".admin.AgentVerificationActivity"
@@ -96,6 +100,10 @@
 
         <activity
             android:name=".admin.ManageAllPropertiesActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".admin.ReportedListingsActivity"
             android:exported="false" />
 
     </application>

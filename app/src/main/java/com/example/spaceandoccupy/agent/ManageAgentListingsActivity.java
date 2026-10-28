@@ -60,17 +60,10 @@ public class ManageAgentListingsActivity extends AppCompatActivity implements Ag
         User currentAgent = sessionManager.getCurrentUser();
         String agentId = currentAgent != null ? currentAgent.getId() : "usr_agent_1";
 
-        repository.getProperties(new PropertyRepository.RepositoryCallback<List<Property>>() {
+        repository.getListingsForAgent(agentId, new PropertyRepository.RepositoryCallback<List<Property>>() {
             @Override
             public void onSuccess(List<Property> result) {
-                List<Property> agentProps = new ArrayList<>();
-                if (result != null) {
-                    for (Property p : result) {
-                        if (agentId.equalsIgnoreCase(p.getAgentId()) || p.getAgentId() == null) {
-                            agentProps.add(p);
-                        }
-                    }
-                }
+                List<Property> agentProps = result != null ? result : new ArrayList<>();
 
                 if (agentProps.isEmpty()) {
                     binding.rvListings.setVisibility(View.GONE);

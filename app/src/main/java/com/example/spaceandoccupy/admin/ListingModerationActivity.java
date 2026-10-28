@@ -51,7 +51,7 @@ public class ListingModerationActivity extends AppCompatActivity implements Admi
     }
 
     private void loadProperties() {
-        repository.getProperties(new PropertyRepository.RepositoryCallback<List<Property>>() {
+        repository.getAllPropertiesForAdmin(new PropertyRepository.RepositoryCallback<List<Property>>() {
             @Override
             public void onSuccess(List<Property> result) {
                 adapter.updateData(result);

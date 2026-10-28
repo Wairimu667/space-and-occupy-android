@@ -72,7 +72,7 @@ public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.Proper
 
         public void bind(Property property) {
             binding.tvTitle.setText(property.getTitle());
-            binding.tvLocation.setText(property.getLocation());
+            binding.tvLocation.setText(property.getPublicLocationLabel());
             binding.tvPrice.setText(property.getFormattedPrice() + (property.getPriceUnit() != null ? " " + property.getPriceUnit() : ""));
             binding.tvPropertyType.setText(property.getPropertyType());
             binding.tvListingType.setText(property.getListingType() != null ? property.getListingType().toUpperCase() : "");
@@ -109,9 +109,10 @@ public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.Proper
             });
 
             // Image Glide Loading
-            if (property.getImageUrl() != null && !property.getImageUrl().isEmpty()) {
+            String imageUrl = property.getDisplayImageUrl();
+            if (imageUrl != null && !imageUrl.isEmpty()) {
                 Glide.with(context)
-                        .load(property.getImageUrl())
+                        .load(imageUrl)
                         .placeholder(R.drawable.placeholder)
                         .error(R.drawable.placeholder)
                         .centerCrop()

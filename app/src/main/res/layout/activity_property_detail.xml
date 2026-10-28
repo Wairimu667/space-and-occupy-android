@@ -66,6 +66,34 @@
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
+                <!-- Freshly Captured Anti-Fraud Badge -->
+                <TextView
+                    android:id="@+id/tv_freshly_captured_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginTop="52dp"
+                    android:layout_marginStart="16dp"
+                    android:background="#2E7D32"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:text="📷 Freshly Captured"
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <ImageButton
+                    android:id="@+id/btn_flag_listing"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="top|end"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/bg_rounded_badge"
+                    android:contentDescription="Report listing"
+                    android:src="@drawable/ic_flag"
+                    app:tint="@color/white" />
+
                 <!-- Favorite FAB -->
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/fab_favorite"
@@ -153,6 +181,41 @@
                         android:text="Upper East Side, New York"
                         android:textColor="@color/grey"
                         android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <!-- Navigation Map Actions -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_route_to_property"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:text="Route to Property"
+                        android:textSize="12sp"
+                        app:cornerRadius="8dp"
+                        app:icon="@android:drawable/ic_menu_directions"
+                        app:iconSize="16dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_share_map_link"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        android:text="Share Map Link"
+                        android:textSize="12sp"
+                        app:cornerRadius="8dp"
+                        app:icon="@android:drawable/ic_menu_share"
+                        app:iconSize="16dp" />
 
                 </LinearLayout>
 

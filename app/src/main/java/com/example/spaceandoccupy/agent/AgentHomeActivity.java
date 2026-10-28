@@ -14,6 +14,8 @@ import com.example.spaceandoccupy.databinding.ActivityAgentHomeBinding;
 import com.example.spaceandoccupy.model.User;
 import com.example.spaceandoccupy.repository.PropertyRepository;
 import com.example.spaceandoccupy.repository.SessionManager;
+import com.example.spaceandoccupy.subscription.SubscriptionPolicy;
+import com.example.spaceandoccupy.subscription.SubscriptionTier;
 
 public class AgentHomeActivity extends AppCompatActivity {
 
@@ -36,16 +38,17 @@ public class AgentHomeActivity extends AppCompatActivity {
         });
 
         sessionManager = PropertyRepository.getInstance(this).getSessionManager();
-        User currentUser = sessionManager.getCurrentUser();
+        bindAgentHeader();
 
-        if (currentUser != null) {
-            binding.tvAgentName.setText(currentUser.getName());
-            String agencyInfo = (currentUser.getAgencyName() != null ? currentUser.getAgencyName() : "Independent Agent")
-                    + (currentUser.getLicenseNumber() != null ? " • License #" + currentUser.getLicenseNumber() : "");
-            binding.tvAgencyName.setText(agencyInfo);
-        }
+        binding.btnManageSubscription.setOnClickListener(v ->
+                startActivity(new Intent(AgentHomeActivity.this, SubscriptionActivity.class)));
 
         binding.btnAddListing.setOnClickListener(v -> {
+            User currentUser = sessionManager.getCurrentUser();
+            if (!SubscriptionPolicy.isSubscriptionActive(currentUser, System.currentTimeMillis())) {
+                startActivity(new Intent(AgentHomeActivity.this, SubscriptionActivity.class));
+                return;
+            }
             startActivity(new Intent(AgentHomeActivity.this, AddPropertyActivity.class));
         });
 
@@ -64,5 +67,25 @@ public class AgentHomeActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        bindAgentHeader();
+    }
+
+    private void bindAgentHeader() {
+        User currentUser = sessionManager.getCurrentUser();
+        if (currentUser == null) {
+            return;
+        }
+        binding.tvAgentName.setText(currentUser.getName());
+        String agencyInfo = (currentUser.getAgencyName() != null ? currentUser.getAgencyName() : "Independent Agent")
+                + (currentUser.getLicenseNumber() != null ? " • License #" + currentUser.getLicenseNumber() : "");
+        binding.tvAgencyName.setText(agencyInfo);
+        SubscriptionTier tier = SubscriptionPolicy.currentTier(currentUser);
+        binding.tvSubscriptionStatus.setText(tier.getDisplayName() + " • "
+                + SubscriptionPolicy.statusLabel(currentUser, System.currentTimeMillis()));
     }
 }

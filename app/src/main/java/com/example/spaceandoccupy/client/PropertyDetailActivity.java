@@ -74,7 +74,7 @@ public class PropertyDetailActivity extends AppCompatActivity {
     private void populatePropertyDetails() {
         binding.tvTitle.setText(property.getTitle());
         binding.tvPrice.setText(property.getFormattedPrice() + (property.getPriceUnit() != null ? " " + property.getPriceUnit() : ""));
-        binding.tvLocation.setText(property.getLocation());
+        binding.tvLocation.setText(property.getPublicLocationLabel());
         binding.tvListingType.setText(property.getListingType() != null ? property.getListingType().toUpperCase() : "");
 
         binding.tvBeds.setText(String.valueOf(property.getBedrooms()));
@@ -98,17 +98,26 @@ public class PropertyDetailActivity extends AppCompatActivity {
         }
         binding.tvStatusBadge.setBackgroundTintList(ColorStateList.valueOf(statusBgColor));
 
-        // Agent Info
-        binding.tvAgentName.setText(property.getAgentName() != null ? property.getAgentName() : "Marcus Vance");
-        binding.tvAgentPhone.setText(property.getAgentPhone() != null ? property.getAgentPhone() : "+1 (555) 876-5432");
+        // Freshly Captured Badge
+        if (property.isFreshlyCaptured()) {
+            binding.tvFreshlyCapturedBadge.setVisibility(android.view.View.VISIBLE);
+        } else {
+            binding.tvFreshlyCapturedBadge.setVisibility(android.view.View.GONE);
+        }
+
+        // Agent Info with [✓] Verified Badge
+        String agentName = property.getAgentName() != null ? property.getAgentName() : "Space & Occupy Agent";
+        binding.tvAgentName.setText(agentName + " [✓] Verified Agent");
+        binding.tvAgentPhone.setText(property.getAgentPhone() != null ? property.getAgentPhone() : "+254 787 900284");
 
         // Favorite State
         updateFavoriteFabState(sessionManager.isFavorite(property.getId()));
 
         // Image
-        if (property.getImageUrl() != null && !property.getImageUrl().isEmpty()) {
+        String imageUrl = property.getDisplayImageUrl();
+        if (imageUrl != null && !imageUrl.isEmpty()) {
             Glide.with(this)
-                    .load(property.getImageUrl())
+                    .load(imageUrl)
                     .placeholder(R.drawable.placeholder)
                     .error(R.drawable.placeholder)
                     .centerCrop()
@@ -138,8 +147,33 @@ public class PropertyDetailActivity extends AppCompatActivity {
             Toast.makeText(this, isFav ? "Saved to Favorites" : "Removed from Favorites", Toast.LENGTH_SHORT).show();
         });
 
+        binding.btnRouteToProperty.setOnClickListener(v -> {
+            String locationQuery = property.getPublicLocationLabel();
+            android.net.Uri gmmIntentUri = android.net.Uri.parse("geo:0,0?q=" + android.net.Uri.encode(locationQuery));
+            android.content.Intent mapIntent = new android.content.Intent(android.content.Intent.ACTION_VIEW, gmmIntentUri);
+            mapIntent.setPackage("com.google.android.apps.maps");
+            try {
+                startActivity(mapIntent);
+            } catch (Exception e) {
+                // Fallback to web maps browser
+                android.content.Intent browserIntent = new android.content.Intent(android.content.Intent.ACTION_VIEW,
+                        android.net.Uri.parse("https://www.google.com/maps/search/?api=1&query=" + android.net.Uri.encode(locationQuery)));
+                startActivity(browserIntent);
+            }
+        });
+
+        binding.btnShareMapLink.setOnClickListener(v -> {
+            String locationQuery = property.getPublicLocationLabel();
+            String mapDeepLink = "https://maps.google.com/?q=" + android.net.Uri.encode(locationQuery);
+            android.content.Intent shareIntent = new android.content.Intent(android.content.Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "View map location for " + property.getTitle() + ":\n" + mapDeepLink);
+            startActivity(android.content.Intent.createChooser(shareIntent, "Share Map Deep Link"));
+        });
+
         binding.btnSubmitInquiry.setOnClickListener(v -> showInquiryDialog());
         binding.btnScheduleVisit.setOnClickListener(v -> showScheduleVisitDialog());
+        binding.btnFlagListing.setOnClickListener(v -> ReportListingHelper.show(this, property));
     }
 
     private void updateFavoriteFabState(boolean isFavorite) {

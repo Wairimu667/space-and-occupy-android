@@ -42,6 +42,9 @@ public class LoginActivity extends AppCompatActivity {
 
         repository = PropertyRepository.getInstance(this);
 
+        // Secret Easter Egg Admin Portal Gate (Tap Logo 5 Times Rapidly)
+        com.example.spaceandoccupy.admin.AdminEasterEggPortal.attachTrigger(binding.imgLogo, LoginActivity.this);
+
         binding.btnLogin.setOnClickListener(v -> performLogin());
 
         binding.tvGoToRegister.setOnClickListener(v -> {

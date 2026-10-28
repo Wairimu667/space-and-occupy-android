@@ -71,11 +71,13 @@ public class AgentListingAdapter extends RecyclerView.Adapter<AgentListingAdapte
             binding.tvTitle.setText(property.getTitle());
             binding.tvPriceLocation.setText(property.getFormattedPrice() + " • " + property.getLocation());
 
-            String status = property.getStatus() != null ? property.getStatus().toUpperCase() : "AVAILABLE";
+            String status = property.isHiddenFromPublicFeed()
+                    ? "HIDDEN"
+                    : (property.getStatus() != null ? property.getStatus().toUpperCase() : "AVAILABLE");
             binding.tvStatusBadge.setText(status);
 
             int statusBgColor;
-            if ("SOLD".equals(status)) {
+            if ("HIDDEN".equals(status) || "SOLD".equals(status)) {
                 statusBgColor = ContextCompat.getColor(context, R.color.status_sold);
             } else if ("RENTED".equals(status)) {
                 statusBgColor = ContextCompat.getColor(context, R.color.status_rented);

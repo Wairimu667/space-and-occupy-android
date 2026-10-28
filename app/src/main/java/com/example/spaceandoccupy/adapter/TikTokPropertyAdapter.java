@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.spaceandoccupy.R;
 import com.example.spaceandoccupy.client.PropertyDetailActivity;
+import com.example.spaceandoccupy.client.ReportListingHelper;
 import com.example.spaceandoccupy.model.Property;
 import com.example.spaceandoccupy.repository.PropertyRepository;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -56,11 +57,13 @@ public class TikTokPropertyAdapter extends RecyclerView.Adapter<TikTokPropertyAd
 
         holder.tvTitle.setText(property.getTitle());
         holder.tvPrice.setText(property.getFormattedPrice());
-        holder.tvLocation.setText(property.getLocation());
+        holder.tvLocation.setText(property.getPublicLocationLabel());
         holder.tvDesc.setText(property.getDescription());
 
-        // Listing Badge
-        String badgeText = String.format("%s • %s",
+        // Listing Badge (with Anti-Fraud Freshly Captured badge if recorded in-app)
+        String freshBadge = property.isFreshlyCaptured() ? "📷 FRESHLY CAPTURED • " : "";
+        String badgeText = String.format("%s%s • %s",
+                freshBadge,
                 property.getListingType() != null ? property.getListingType().toUpperCase() : "FOR SALE",
                 property.getPropertyType() != null ? property.getPropertyType().toUpperCase() : "PROPERTY");
         holder.tvBadge.setText(badgeText);
@@ -83,9 +86,10 @@ public class TikTokPropertyAdapter extends RecyclerView.Adapter<TikTokPropertyAd
         }
 
         // Load Background Image
-        if (property.getImageUrl() != null && !property.getImageUrl().isEmpty()) {
+        String imageUrl = property.getDisplayImageUrl();
+        if (imageUrl != null && !imageUrl.isEmpty()) {
             Glide.with(context)
-                    .load(property.getImageUrl())
+                    .load(imageUrl)
                     .placeholder(R.drawable.placeholder)
                     .error(R.drawable.placeholder)
                     .centerCrop()
@@ -126,6 +130,8 @@ public class TikTokPropertyAdapter extends RecyclerView.Adapter<TikTokPropertyAd
             intent.putExtra("property", property);
             context.startActivity(intent);
         });
+
+        holder.btnFlag.setOnClickListener(v -> ReportListingHelper.show(context, property));
     }
 
     private void showEnquiryBottomSheet(Property property) {
@@ -197,7 +203,7 @@ public class TikTokPropertyAdapter extends RecyclerView.Adapter<TikTokPropertyAd
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgPropertyBg, imgAgentAvatar, btnFavorite, btnShare, btnDetails;
+        ImageView imgPropertyBg, imgAgentAvatar, btnFavorite, btnShare, btnDetails, btnFlag;
         View btnEnquire;
         TextView tvBadge, tvAgentName, tvTitle, tvPrice, tvLocation, tvDesc, tvSpecs;
 
@@ -209,6 +215,7 @@ public class TikTokPropertyAdapter extends RecyclerView.Adapter<TikTokPropertyAd
             btnFavorite = itemView.findViewById(R.id.btn_action_favorite);
             btnShare = itemView.findViewById(R.id.btn_action_share);
             btnDetails = itemView.findViewById(R.id.btn_action_details);
+            btnFlag = itemView.findViewById(R.id.btn_action_flag);
 
             tvBadge = itemView.findViewById(R.id.tv_listing_badge);
             tvAgentName = itemView.findViewById(R.id.tv_agent_name);

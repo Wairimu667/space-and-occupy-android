@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Flag inaccurate pricing, fake media, or an expired listing. This routes instantly to the admin dashboard."
+        android:textColor="@color/grey"
+        android:textSize="13sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Optional details"
+        app:boxStrokeColor="@color/primary_brown">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_report_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:textColor="@color/brand_black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_reason_pricing"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:text="Inaccurate pricing"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/primary_brown"
+        app:cornerRadius="10dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_reason_media"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Fake media"
+        android:textColor="@color/primary_brown"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/border_color" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_reason_expired"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Expired listing"
+        android:textColor="@color/primary_brown"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/border_color" />
+
+</LinearLayout>
